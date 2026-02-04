@@ -1,0 +1,3 @@
+-- init.sql
+CREATE DATABASE IF NOT EXISTS users_db;
+CREATE DATABASE IF NOT EXISTS catalog_db;

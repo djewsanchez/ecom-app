@@ -28,7 +28,22 @@ export type Product = {
   price_cents: number;
 };
 
+export type Order = {
+  id: number;
+  user_id: number;
+  total_cents: number;
+  created_at: Date;
+};
+
 export const api = {
   getProducts: () => request<Product[]>("/api/catalog/products/"),
   getProduct: (id: number) => request<Product>(`/api/catalog/products/${id}/`),
+  createOrder: (payload: {
+    items: { product_id: number; quantity: number }[];
+  }) =>
+    request<Order>(`/api/catalog/order`, {
+      method: "POST",
+      body: JSON.stringify(payload),
+    }),
+  getMyOrders: () => request<Order[]>("/api/catalog/orders/my/"),
 };

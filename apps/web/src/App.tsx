@@ -1,6 +1,8 @@
 import { Container, Title, Text } from "@mantine/core";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { ProductsPage } from "./pages/ProductsPage";
+import { CheckoutPage } from "./pages/CheckoutPage";
+import { MyOrdersPage } from "./pages/MyOrdersPage";
 
 export default function App() {
   return (
@@ -11,6 +13,8 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<ProductsPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/orders" element={<MyOrdersPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>

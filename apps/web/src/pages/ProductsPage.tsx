@@ -1,8 +1,19 @@
 import { useEffect, useState } from "react";
-import { Alert, Card, Container, SimpleGrid, Text, Title } from "@mantine/core";
+import {
+  Alert,
+  Button,
+  Card,
+  Container,
+  SimpleGrid,
+  Text,
+  Title,
+} from "@mantine/core";
 import { api, type Product } from "../lib/api";
+// import { useAppDispatch } from "../store/hooks";
+// import { addItem } from "../store/cartSlice";
 
 export function ProductsPage() {
+  //   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -44,6 +55,20 @@ export function ProductsPage() {
                 {p.description || "—"}
               </Text>
               <Text mt="sm">₱ {(p.price_cents / 100).toFixed(2)}</Text>
+              {/* <Button
+                mt="md"
+                onClick={() =>
+                  dispatch(
+                    addItem({
+                      productId: p.id,
+                      name: p.name,
+                      priceCents: p.price_cents,
+                    }),
+                  )
+                }
+              >
+                Add to cart
+              </Button> */}
             </Card>
           ))}
         </SimpleGrid>
